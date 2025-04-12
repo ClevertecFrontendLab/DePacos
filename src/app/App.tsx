@@ -1,34 +1,61 @@
-import './App.css';
+import './App.styles';
 
-import { useState } from 'react';
+import { GridItem } from '@chakra-ui/icons';
+import { Grid, useBreakpointValue } from '@chakra-ui/react';
+import { Route, Routes } from 'react-router';
 
-import reactLogo from '~/assets/react.svg';
-import { useGetPostsQuery } from '~/query/services/posts.ts';
+import { BestRecipePage } from '~/pages/best-recipe/BestRecipePage';
+import { MainPage } from '~/pages/main/ui/MainPage';
+import { VeganCuisunePage } from '~/pages/vegan-cuisune/ui/VeganCuisunePage';
+import { NavMobileFooter } from '~/widgets/Footer/Nav/ui/NavMobileFooter';
+import { Header } from '~/widgets/Header/ui/Header';
+import { LeftSidebar } from '~/widgets/Left-sidebar/ui/LeftSidebar';
+import { RightSidebar } from '~/widgets/Right-sidebar/ui/RightSidebar';
 
-function App() {
-    const [count, setCount] = useState(0);
-    const { data: _data, isLoading: _isLoading } = useGetPostsQuery();
+import { styles } from './App.styles';
+
+const App = () => {
+    const isTablet =
+        useBreakpointValue({
+            base: false,
+            '2lg': true,
+        }) ?? false;
 
     return (
-        <>
-            <div>
-                <a href='https://vite.dev' target='_blank'>
-                    <img src='/vite.svg' className='logo' alt='Vite logo' />
-                </a>
-                <a href='https://react.dev' target='_blank'>
-                    <img src={reactLogo} className='logo react' alt='React logo' />
-                </a>
-            </div>
-            <h1>Vite + React</h1>
-            <div className='card'>
-                <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
-                <p>
-                    Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-            </div>
-            <p className='read-the-docs'>Click on the Vite and React logos to learn more</p>
-        </>
+        <Grid
+            sx={styles.wrapper}
+            templateAreas={{
+                base: `'header' 'main' 'footer'`,
+                '2lg': `'header header header' 'nav main info'`,
+            }}
+            gridTemplateRows={{ base: '80px 1fr 84px', lg: '80px 1fr' }}
+            gridTemplateColumns={{ base: '1fr', '2lg': '256px 1fr 280px' }}
+        >
+            <GridItem as='header' area='header' sx={styles.header} data-test-id='header'>
+                <Header />
+            </GridItem>
+            {isTablet && (
+                <GridItem as='aside' area='nav'>
+                    <LeftSidebar />
+                </GridItem>
+            )}
+            <GridItem as='main' area='main' sx={styles.main}>
+                <Routes>
+                    <Route path='/' element={<MainPage />} />
+                    <Route path='/vegan/second-courses' element={<VeganCuisunePage />} />
+                    <Route path='/best-recipe' element={<BestRecipePage />} />
+                </Routes>
+            </GridItem>
+            {isTablet ? (
+                <GridItem as='aside' area='info'>
+                    <RightSidebar />
+                </GridItem>
+            ) : (
+                <GridItem as='footer'>
+                    <NavMobileFooter />
+                </GridItem>
+            )}
+        </Grid>
     );
-}
-
+};
 export default App;
