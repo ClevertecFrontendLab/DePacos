@@ -124,7 +124,9 @@ export const getStyles = (variant: 'slider' | 'card' | 'description') => ({
         lineHeight: '20px',
         noOfLines: '3',
         ...(variant !== 'card' && { marginBottom: '24px' }),
-        ...(variant === 'description' && { maxWidth: { base: '196px', '2xl': '278px' } }),
+        ...(variant === 'description' && {
+            maxWidth: { base: '100%', md: '196px', xl: '234px', '2xl': '278px' },
+        }),
         ...(variant === 'slider' && { maxWidth: { base: '290px', xl: '235px', '2xl': '263px' } }),
     },
 
