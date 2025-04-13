@@ -287,7 +287,7 @@ export const mockRecipeSlider = [
             'Очень вкусные и нежные оладьи на кефире. Настоятельно рекомендую пышные кефирные оладьи на завтрак.',
         category: 'Десерты, выпечка',
         image: oladi,
-        likes: 2,
+        likes: 1,
         bookmarks: null,
         icon: <Desserts width={16} />,
     },
@@ -300,5 +300,15 @@ export const mockRecipeSlider = [
         likes: null,
         bookmarks: null,
         icon: <Salads width={16} />,
+    },
+    {
+        title: 'Оладьи на кефире "Пышные"',
+        description:
+            'Очень вкусные и нежные оладьи на кефире. Настоятельно рекомендую пышные кефирные оладьи на завтрак.',
+        category: 'Десерты, выпечка',
+        image: oladi,
+        likes: 1,
+        bookmarks: null,
+        icon: <Desserts width={16} />,
     },
 ];
