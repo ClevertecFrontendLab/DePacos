@@ -1,6 +1,7 @@
 import { Box, Tab, TabList, TabPanel, TabPanels, Tabs, useBreakpointValue } from '@chakra-ui/react';
 import { useEffect, useRef, useState } from 'react';
 
+
 import { mockRecipe } from '~/data/mockRecipes';
 import { RecipesList } from '~/shared/Recipes-list/ui/RecipesList';
 import { styles } from '~/shared/Tabs-recipe/ui/TabsRecipe.styles';

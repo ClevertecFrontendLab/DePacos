@@ -287,7 +287,7 @@ export const mockRecipeSlider = [
             'Очень вкусные и нежные оладьи на кефире. Настоятельно рекомендую пышные кефирные оладьи на завтрак.',
         category: 'Десерты, выпечка',
         image: oladi,
-        likes: 1,
+        likes: 2,
         bookmarks: null,
         icon: <Desserts width={16} />,
     },

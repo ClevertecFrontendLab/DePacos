@@ -32,6 +32,6 @@ export const styles = {
 
     description: {
         noOfLines: 3,
-        maxWidth: { base: '262px', md: '355px' },
+        maxWidth: { base: '262px', md: '355px' }
     },
 };

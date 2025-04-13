@@ -69,8 +69,7 @@ export const Nav = () => {
                     data-test-id='vegan-cuisine'
                     icon={<Vegan />}
                     label='Веганская кухня'
-                    url='/vegan/second-courses'
-                >
+                    url='/vegan/second-courses'>
                     <NavLinkItem href='#'>Закуски</NavLinkItem>
                     <NavLinkItem href='#'>Первые блюда</NavLinkItem>
                     <NavLinkItem href='/vegan/second-courses'>Вторые блюда</NavLinkItem>
