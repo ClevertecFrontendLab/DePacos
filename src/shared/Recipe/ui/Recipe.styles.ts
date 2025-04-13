@@ -45,12 +45,12 @@ export const getStyles = (variant: 'slider' | 'card' | 'description') => ({
         ...((variant === 'slider' || variant === 'description') && {
             flexDirection: 'column-reverse',
             justifyContent: 'start',
-            padding: { base: '8px', lg: '8px', xl: '12px', '2xl': '16px 24px 20px 24px' },
+            padding: { base: '9px', lg: '8px', xl: '12px', '2xl': '16px 24px 20px 24px' },
         }),
         ...(variant === 'card' && {
             maxWidth: '100%',
             flexDirection: 'column',
-            padding: { base: '8px', lg: '8px', xl: '16px 24px 20px 24px' },
+            padding: { base: '8px 8px 8px 16px', lg: '8px', xl: '16px 24px 20px 24px' },
         }),
         ...(variant === 'description' && {
             width: '100%',
@@ -124,6 +124,8 @@ export const getStyles = (variant: 'slider' | 'card' | 'description') => ({
         lineHeight: '20px',
         noOfLines: '3',
         ...(variant !== 'card' && { marginBottom: '24px' }),
+        ...(variant === 'description' && { maxWidth: { base: '196px', '2xl': '278px' } }),
+        ...(variant === 'slider' && { maxWidth: { base: '290px', xl: '235px', '2xl': '263px' } }),
     },
 
     saveButton: {
