@@ -24,7 +24,14 @@ export const styles = {
     },
 
     tabsWrap: {
+        display: 'flex',
+        justifyContent: { base: 'start', md: 'center' },
         overflowX: 'auto',
+        msOverflowStyle: 'none',
+        scrollbarWidth: 'none',
+        '&::-webkit-scrollbar': {
+            display: 'none',
+        },
     },
 
     container: {
