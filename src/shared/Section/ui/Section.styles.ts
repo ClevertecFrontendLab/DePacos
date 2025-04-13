@@ -47,8 +47,9 @@ export const getStyles = ({
             lineHeight: { base: '32px', xl: '40px', '2xl': '48px' },
         }),
         ...(display === 'flex' && {
-            flex: { base: 'inherit', '2xl': '0 0 50%' },
-            padding: { base: '0', xl: '0 14% 0 0', '2xl': '0' },
+            flex: { base: 'inherit', '2xl': '0 0 49.5%' },
+            margin: { base: '0', xl: '0 2% 0 0', '2xl': '0' },
+            maxWidth: { base: '298px', xl: '260px', '2xl': '100%' },
         }),
     },
 
@@ -59,6 +60,8 @@ export const getStyles = ({
         opacity: '0.64',
         ...(textAlign === 'left' && {
             marginBottom: 0,
+            maxWidth: { base: '100%', xl: '525px', '2xl': '630px' },
+            letterSpacing: '0.3px',
         }),
         ...(textAlign === 'center' && {
             maxWidth: { base: '727px', xl: '696px' },

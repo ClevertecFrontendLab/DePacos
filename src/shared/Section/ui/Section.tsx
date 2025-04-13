@@ -1,5 +1,3 @@
-// shared/ui/section/ui/Section.tsx
-
 import { Box, Heading, ResponsiveValue, Text } from '@chakra-ui/react';
 import { ReactNode } from 'react';
 
@@ -29,16 +27,28 @@ export const Section = ({
     const styles = getStyles({ heading, textAlign, display, description });
 
     return (
-        <Box as='section' sx={styles.wrapper(bgColor, margin)}>
-            <Box sx={styles.inner}>
-                <Heading as={heading} sx={styles.heading}>
-                    {title}
-                </Heading>
+        <>
+            <Box
+                as='section'
+                sx={{
+                    ...styles.wrapper(bgColor, margin),
+                    ...(display === 'flex' && {
+                        padding: { base: '8px 0 0 0', xl: '24px 0 0 0' },
+                        borderTop: '1px solid',
+                        borderColor: 'black.200',
+                    }),
+                }}
+            >
+                <Box sx={styles.inner}>
+                    <Heading as={heading} sx={styles.heading}>
+                        {title}
+                    </Heading>
 
-                {description && <Text sx={styles.description}>{description}</Text>}
+                    {description && <Text sx={styles.description}>{description}</Text>}
+                </Box>
+
+                <Box sx={styles.children}>{children}</Box>
             </Box>
-
-            <Box sx={styles.children}>{children}</Box>
-        </Box>
+        </>
     );
 };
