@@ -17,7 +17,7 @@ export const LeftSidebar = () => (
                 <br />
                 ©Клевер Технолоджи, 2025
             </Text>
-            <Button leftIcon={<Logout />} sx={{ ...styles.logoutButton }}>
+            <Button variant='link' leftIcon={<Logout />} sx={{ ...styles.logoutButton }}>
                 Выйти
             </Button>
         </Box>

@@ -26,7 +26,25 @@ export const Nav = () => {
     };
 
     return (
-        <Box as='nav' aria-label='Меню' sx={styles.navWrap}>
+        <Box
+            as='nav'
+            aria-label='Меню'
+            sx={styles.navWrap}
+            css={{
+                '&::-webkit-scrollbar': {
+                    background: 'rgba(0, 0, 0, 0.04)',
+                    width: '8px',
+                    height: '8px',
+                },
+                '&::-webkit-scrollbar-thumb': {
+                    background: 'rgba(0, 0, 0, 0.16)',
+                    borderRadius: '8px',
+                    width: '8px',
+                    height: '8px',
+                    border: '4px solid transparent',
+                },
+            }}
+        >
             <Accordion allowMultiple>
                 <NavItem onClick={handleNavItem} icon={<Salads />} label='Салаты'>
                     <NavLinkItem href='#'>subMenu</NavLinkItem>
@@ -51,7 +69,7 @@ export const Nav = () => {
                     data-test-id='vegan-cuisine'
                     icon={<Vegan />}
                     label='Веганская кухня'
-                >
+                    url='/vegan/second-courses'>
                     <NavLinkItem href='#'>Закуски</NavLinkItem>
                     <NavLinkItem href='#'>Первые блюда</NavLinkItem>
                     <NavLinkItem href='/vegan/second-courses'>Вторые блюда</NavLinkItem>

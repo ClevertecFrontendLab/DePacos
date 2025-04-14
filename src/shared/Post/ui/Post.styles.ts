@@ -1,6 +1,6 @@
 export const styles = {
     wrapper: {
-        padding: { base: '16px', lg: '24px 24px 20px 24px' },
+        padding: { base: '16px', '2xl': '24px 24px 20px 24px' },
         borderRadius: '8px',
         backgroundColor: 'white.900',
         maxWidth: '427px',
@@ -22,6 +22,7 @@ export const styles = {
         lineHeight: '28px',
         fontWeight: '500',
         noOfLines: 1,
+        wordBreak: 'break-all',
     },
 
     subtitle: {
@@ -30,6 +31,7 @@ export const styles = {
     },
 
     description: {
-        noOfLines: { base: 3, md: 0 },
+        noOfLines: 3,
+        maxWidth: { base: '262px', md: '355px' }
     },
 };

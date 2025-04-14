@@ -15,8 +15,7 @@ export const styles = {
         display: 'flex',
         flexDirection: 'column',
         gap: '16px',
-        px: '24px',
-        pb: '32px',
+        padding: '16px 24px',
     },
 
     versionText: {
@@ -39,7 +38,6 @@ export const styles = {
         fontSize: '12px',
         lineHeight: '16px',
         fontWeight: '600',
-        leftIcon: undefined,
         width: 'max-content',
         _hover: {
             textDecoration: 'none',

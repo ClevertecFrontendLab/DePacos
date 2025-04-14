@@ -1,7 +1,7 @@
 export const getStyles = (isExpanded: boolean) => ({
     button: {
         padding: '12px 8px',
-        backgroundColor: isExpanded ? 'lime.100' : 'transparent',
+        // backgroundColor: isExpanded ? 'lime.100' : 'transparent',
         cursor: 'pointer',
         border: 'none',
         display: 'flex',

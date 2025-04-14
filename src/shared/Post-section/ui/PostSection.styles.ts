@@ -2,7 +2,7 @@ export const styles = {
     wrapper: {
         backgroundColor: 'lime.300',
         padding: { base: '12px 12px 64px 12px', xl: '24px' },
-        margin: { base: '0 0 120px 0', md: '0 0 40px 0', lg: '0 0 64px 0' },
+        margin: { base: '0 0 42px 0', md: '0 0 40px 0', lg: '0 0 40px 0' },
         borderRadius: '16px',
         position: 'relative',
     },

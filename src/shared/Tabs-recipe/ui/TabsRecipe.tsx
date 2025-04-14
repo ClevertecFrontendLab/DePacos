@@ -1,4 +1,6 @@
-import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { Box, Tab, TabList, TabPanel, TabPanels, Tabs, useBreakpointValue } from '@chakra-ui/react';
+import { useEffect, useRef, useState } from 'react';
+
 
 import { mockRecipe } from '~/data/mockRecipes';
 import { RecipesList } from '~/shared/Recipes-list/ui/RecipesList';
@@ -25,25 +27,55 @@ const tabItems = [
     { label: 'Напитки', content: <p>Напитки</p> },
 ];
 
-export const TabsRecipe = () => (
-    <Tabs sx={styles.container} defaultIndex={2}>
-        <Box className='test' sx={styles.tabsWrap}>
-            <TabList sx={styles.tabList}>
-                {tabItems.map((item, i) => (
-                    <Tab key={i} sx={styles.tab}>
-                        {item.label}
-                    </Tab>
-                ))}
-            </TabList>
-        </Box>
+export const TabsRecipe = () => {
+    const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const isMobile = useBreakpointValue({ base: true, md: false, lg: true }) ?? false;
 
-        <TabPanels>
-            {tabItems.map((item, i) => (
-                // <TabPanel key={i} sx={styles.tabPanel}>
-                <TabPanel key={i} sx={styles.tabPanel}>
-                    {item.content}
-                </TabPanel>
-            ))}
-        </TabPanels>
-    </Tabs>
-);
+    const correctedIndex = isMobile ? 1 : 2;
+
+    const [activeIndex, setActiveIndex] = useState(correctedIndex);
+    const filteredTabs = isMobile ? tabItems.slice(1) : tabItems;
+
+    useEffect(() => {
+        setActiveIndex(correctedIndex);
+    }, [isMobile]);
+
+    useEffect(() => {
+        const activeTab = tabRefs.current[activeIndex];
+        if (activeTab) {
+            activeTab.scrollIntoView({
+                behavior: 'smooth',
+                inline: 'center',
+                block: 'nearest',
+            });
+        }
+    }, [activeIndex]);
+
+    return (
+        <Tabs index={activeIndex} onChange={(index) => setActiveIndex(index)} sx={styles.container}>
+            <Box sx={styles.tabsWrap}>
+                <TabList sx={styles.tabList}>
+                    {filteredTabs.map((item, i) => (
+                        <Tab
+                            key={i}
+                            ref={(el) => {
+                                tabRefs.current[i] = el;
+                            }}
+                            sx={styles.tab}
+                        >
+                            {item.label}
+                        </Tab>
+                    ))}
+                </TabList>
+            </Box>
+
+            <TabPanels>
+                {filteredTabs.map((item, i) => (
+                    <TabPanel key={i} sx={styles.tabPanel}>
+                        {item.content}
+                    </TabPanel>
+                ))}
+            </TabPanels>
+        </Tabs>
+    );
+};
